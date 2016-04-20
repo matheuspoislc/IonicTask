@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var app  = angular.module('starter', ['ionic'])
+var app  = angular.module('starter', ['ionic','starter.controllers','starter.services','starter.configs'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -21,23 +21,8 @@ var app  = angular.module('starter', ['ionic'])
       StatusBar.styleDefault();
     }
   });
-})
-
-app.controller('mainCtrl', function($scope, TaskService){
-$scope.lista = TaskService.recuperarTarefas();
 });
 
-app.factory('TaskService', function(){
-  var lista = [
-    {nome:'Tarefa 1', pronto: false},
-    {nome:'Tarefa 2', pronto: false},
-    {nome:'Tarefa 3', pronto: true},
-    {nome:'Tarefa 4', pronto: true},
-    {nome:'Tarefa 5', pronto: false}
-  ];
-
-  this.recuperarTarefas = function () {
-    return lista;
-  };
-  return this;
-});
+var controllers = angular.module('starter.controllers', []);
+var services = angular.module('starter.services', []);
+var configs = angular.module('starter.configs', []);
